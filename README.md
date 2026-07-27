@@ -37,3 +37,23 @@ This work is published under [MIT][mit] License.
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
 [CD]: https://en.wikipedia.org/wiki/Continuous_deployment
 [mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+
+
+
+## Build method
+
+``` sh
+$ git clone https://github.com/sy460129/sy460129.github.io.git
+$ cd sy460129.github.io
+
+$ git rm -rf . 2>/dev/null || true
+
+$ git remote add starter https://github.com/cotes2020/chirpy-starter.git
+$ git fetch starter
+$ git checkout starter/main -- .
+
+$ git remote remove starter
+$ git add .
+$ git commit -m "Feat: Apply Chirpy theme starter"
+$ git push origin main
+```
