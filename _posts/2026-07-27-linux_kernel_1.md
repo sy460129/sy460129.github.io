@@ -88,6 +88,7 @@ struct cred {
 // commit_creds() 는 생성된 cred 객체를 현재 task_struct의 cred 포인터에 덮어씌움
 commit_creds(prepare_kernel_cred(NULL));
 ```
+단, 최신 커널에서는 CFI 기법이나 심볼 은폐로 인해 이 함수들을 직접 호출하기 어려울 수 있으며, 이 경우 `task_struct` 내부의 `cred` 포인터를 직접 조작하는 `DKOM` 방식을 사용한다.
 
 ## 2. Direct Cred Overwrite (DKOM - Direct Kernel Object Manipulation)
 커널 임의 쓰기(AAW) 주소가 확보된 경우, 현재 프로세스의 `task_struct`를 탐색하거나 `cred` 주소를 Leak한 뒤 `uid`, `gid`, `euid` 필드의 메모리를 직접 0으로 수정한다.
@@ -102,7 +103,7 @@ commit_creds(prepare_kernel_cred(NULL));
 
 ## 3. init_cred 교체 (Cred Pointer Swapping)
 - 커널 메모리 상에는 시스템 최초 프로세스인 init의 권한 정보를 담고 있는 전역 변수 `init_cred`가 존재한다.   
-- `init_cred`는 기본적으로 `root` 권한(UID=0)을 가지고 있다.  
+- `init_cred`는 기본적으로 `root` 권한을 가지고 있다.  
 - 따라서 현재 `task_struct`의 `cred` 및 `real_cred` 포인터가 가리키는 주소를 `init_cred`의 주소로 Overwrite하면 즉시 root 권한을 획득한다.
 
 ```c
