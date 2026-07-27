@@ -1,0 +1,23 @@
+- title: Home
+  url: /
+  icon: fas fa-user-circle
+
+- title: Posts
+  url: /posts/
+  icon: fas fa-stream
+
+- title: Categories
+  url: /categories/
+  icon: fas fa-folder-open
+
+- title: Tags
+  url: /tags/
+  icon: fas fa-tags
+
+- title: Archives
+  url: /archives/
+  icon: fas fa-archive
+
+- title: About
+  url: /about/
+  icon: fas fa-info-circle
