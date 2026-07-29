@@ -2,7 +2,7 @@
 layout: page
 title: Posts
 icon: fas fa-stream
-order: 2
+order: 1
 permalink: /posts/
 ---
 
