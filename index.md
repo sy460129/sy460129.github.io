@@ -51,8 +51,8 @@ permalink: /
 
 # <span class="term-symbol">$</span> <span class="term-cmd">history</span>
 > * `Inha Univ. Computer Science & Engineering` **(2020.03 ~ 2027.02)** 
-> * `WHS 2nd` **(2024.03 ~ 2024.09)**
-> * `BoB 14th Vulnerability Analysis Track Trainee` **(2025.07 ~ 2026.02)**
+> * `WhiteHat School 2nd` **(2024.03 ~ 2024.09)**
+> * `BoB 14th Vulnerability Analysis Track` **(2025.07 ~ 2026.02)**
 
 ---
 
