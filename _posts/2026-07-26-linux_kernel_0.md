@@ -100,5 +100,5 @@ bootlin: [https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L
 - **SMEP** (Supervisor Mode Execution Prevention): 커널 모드(Ring 0) 상태에서 유저 공간 메모리에 위치한 코드(쉘코드 등)를 실행하지 못하도록 CPU 차원에서 차단한다.
 - **SMAP** (Supervisor Mode Access Prevention): 커널 모드 상태에서 명시적인 허용 명령어(`stac`/`clac`) 없이 유저 공간 메모리를 읽거나 쓰지 못하도록 차단한다.
 - **KPTI** (Kernel Page Table Isolation): 유저 모드 실행 중에는 커널 Page Table을 매핑에서 제외하여, Meltdown 공격 및 커널 메모리 주소 유출을 방지한다.
-- **kstack canary**: 유저 공간의 Stack Canary와 동일하게 커널 스택 오버플로우를 방지하기 위해 스택에 랜덤 값을 삽입한다.
+- **SSP** (Stack Smashing Protector): 유저 공간의 Stack Canary와 동일하게 커널 스택 오버플로우를 방지하기 위해 스택에 랜덤 값을 삽입한다.
 - **kCFI** (Kernel Control Flow Integrity): 간접 호출(Indirect Call) 지점에서 정당한 함수 목표인지 검증하여 ROP/JOP 공격을 방어한다.
