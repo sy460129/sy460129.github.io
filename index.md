@@ -39,7 +39,7 @@ permalink: /
 
 ---
 
-# <span class="term-symbol">$</span> <span class="term-cmd">ls -la ./CVEs</span>
+# <span class="term-symbol">$</span> <span class="term-cmd">Published CVE</span>
 > * `CVE-2025-51005` (CVSS: 7.5 / CWE-122)
 > * `CVE-2025-51006` (CVSS: 7.8 / CWE-415)
 > * `CVE-2026-27625` (CVSS: 8.1 / CWE-22, CWE-23)
@@ -61,6 +61,6 @@ permalink: /
 
 ---
 
-# <span class="term-symbol">$</span> <span class="term-cmd">cat ./Awards.txt</span>
+# <span class="term-symbol">$</span> <span class="term-cmd">Awards</span>
 > * `Team BoB::Takedown | Pwn2own Automotive 2026 Winner (Charx-SEC-31XX, Grizzl-e)`
 > * `Team Three-Piece | Inha Univ Capstone`
