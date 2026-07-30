@@ -286,8 +286,14 @@ $ qemu-system-x86_64 \
 
 두 번째 터미널에서 remote로 접속한다.
 ```sh
+# pnwdbg
 # $ gdb-multiarch -q /home/sy46/kernel_lab/linux-6.6.14/vmlinux
-$ gdb -nh ~/kernel_lab/linux-6.6.14/vmlinux
+
+# original gdb
+# $ gdb -nh ~/kernel_lab/linux-6.6.14/vmlinux
+
+# gef
+$ gdb ~/kernel_lab/linux-6.6.14/vmlinux
 (gdb) target remote :1234
 (gdb) continue
 ```
@@ -321,3 +327,47 @@ $ hb chardev_write
 
 만약 pwndbg로 실행했다면 `context` 명령어를 통해 아래 화면을 볼 수 있다.
 ![kernel_pwndbg](/assets/img/linux_kernel_3/kernel_pwndbg.png)
+
+만약 gef로 실행한다면  
+![gef](/assets/img/linux_kernel_3/gef.png)  
+위처럼 볼 수 있다.  
+여기서 gef가 커널 디버깅에 가장 잘 어울린다고 한다.  
+
+참고로 위의 qemu 실행을 쉘 스크립트로 구현할 수 있는데,  
+```sh
+qemu-system-x86_64 \
+-m 4G -smp 4,cores=4,threads=1 \
+-kernel /home/sy46/kernel_lab/linux-6.6.14/arch/x86/boot/bzImage \
+-initrd  /home/sy46/busybox-1.38.0/_install/initramfs.cpio \
+-append "root=/dev/ram rw console=ttyS0 oops=panic panic=1 quiet nopti" \
+-netdev user,id=t0, -device e1000,netdev=t0,id=nic0 \
+-nographic  \
+-cpu host \
+-enable-kvm \
+-s \
+```
+위와 비슷하게 구현하면 된다고 한다.  
+
+또한, init 파일도 수정하면
+```sh
+#!/bin/sh
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs devtmpfs /dev
+exec 0</dev/console
+exec 1>/dev/console
+exec 2>/dev/console
+
+echo "7 4 1 7" > /proc/sys/kernel/printk
+
+cp /proc/kallsyms /tmp/kallsyms
+
+setsid cttyhack setuidgid 1000 sh
+
+umount /proc
+umount /sys
+poweroff -d 0  -f
+```
+위를 통해 init process 실행 시 초기화가 진행된다고 한다.  
+qemu 쉘 스크립트와 init 파일은 나중에 수정해야겠다.
