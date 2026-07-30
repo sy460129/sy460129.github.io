@@ -45,7 +45,8 @@ permalink: /
 > * `CVE-2026-27625` (CVSS: 8.1 / CWE-22, CWE-23)
 > * `CVE-2026-27691` (CVSS: 6.2 / CWE-190, CWE-681)
 > * `CVE-2026-26997` (CVSS: 2.0 / CWE-79)
-> * `CVE-2026-28354` (CVSS: 5.7 / CWE-639, CWE-863)
+> * `CVE-2026-28354` (CVSS: 5.7 / CWE-639, CWE-863) <br>  
+> [CHARX-SEC-31XX Vulnerability Update](/assets/file/charx_2026-008.pdf)
 > * **(Pwn2Own)** `ZDI-CAN-29108 / CVE-2026-44095` (CVSS: 7.8 / CWE-78)
 > * **(Pwn2Own)** `ZDI-CAN-29109 / CVE-2026-44096` (CVSS: 7.8 / CWE-78)
 > * **(Pwn2Own)** `ZDI-CAN-29110 / CVE-2026-44097` (CVSS: 2.4 / CWE-434)
