@@ -46,11 +46,11 @@ permalink: /
 > * `CVE-2026-27691` (CVSS: 6.2 / CWE-190, CWE-681)
 > * `CVE-2026-26997` (CVSS: 2.0 / CWE-79)
 > * `CVE-2026-28354` (CVSS: 5.7 / CWE-639, CWE-863)
-> * `CVE-2026-44095` (CVSS: 8.5 / CWE-78) - `Pwn2Own`
-> * `CVE-2026-44096` (CVSS: 8.5 / CWE-78) - `Pwn2Own`
-> * `CVE-2026-44097` (CVSS: 7.1 / CWE-434) - `Pwn2Own`
-> * `CVE-2026-44107` (CVSS: 8.7 / CWE-749) - `Pwn2Own`
-> * `CVE-2026-44108` (CVSS: 9.8 / CWE-696) - `Pwn2Own`
+> * **(Pwn2Own)** `CVE-2026-44095` (CVSS: 8.5 / CWE-78)
+> * **(Pwn2Own)** `CVE-2026-44096` (CVSS: 8.5 / CWE-78)
+> * **(Pwn2Own)** `CVE-2026-44097` (CVSS: 7.1 / CWE-434)
+> * **(Pwn2Own)** `CVE-2026-44107` (CVSS: 8.7 / CWE-749)
+> * **(Pwn2Own)** `CVE-2026-44108` (CVSS: 9.8 / CWE-696)
 
 ---
 
