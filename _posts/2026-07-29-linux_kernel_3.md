@@ -293,7 +293,7 @@ $ gdb -nh ~/kernel_lab/linux-6.6.14/vmlinux
 ```
 
 이후 insmod를 통해 생성한 커널 모듈을 삽입한다.
-![insmod_chardev](/assets/img/linux_kernel_3/insmod_chardev.png)
+![insmod_chardev](/assets/img/linux_kernel_3/insmod_chardev.png)  
 그런데 만약 /dev 경로에 console밖에 없다면
 ```sh
 $ mount -t devtmpfs devtmpfs /dev
