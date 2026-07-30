@@ -316,7 +316,7 @@ $ hb chardev_write
 ![add_symbol](/assets/img/linux_kernel_3/add_symbol.png)
 
 성공 시 아래처럼 bp가 걸리게 된다.
-![chardev_break](/assets/img/linux_kernel_3/chardev_break.png)
+![chardev_break](/assets/img/linux_kernel_3/chardev_break.png)  
 자세히 보고싶다면 `list`명령어를 입력하면 되고,
 
 만약 pwndbg로 실행했다면 `context` 명령어를 통해 아래 화면을 볼 수 있다.
