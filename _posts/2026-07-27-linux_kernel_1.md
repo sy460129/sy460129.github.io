@@ -5,11 +5,11 @@ categories: [Kernel, Pwnable]
 tags: [linux, kernel]
 ---
 
-# 1. task_struct
+## 1. task_struct
 리눅스 커널은 유저 공간의 프로세스와 쓰레드를 구분하지 않고, 모두 스케줄링의 기본 단위인 **Task**로 관리한다.  
 이 Task를 표현하는 거대한 C 구조체가 바로 `task_struct`이다.
 
-### 멤버 변수 필드 (sched.h)
+### 1-1. 멤버 변수 필드 (sched.h)
 *Bootlin 참조:* [`include/linux/sched.h`](https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L820)
 
 ```c
@@ -41,15 +41,15 @@ struct task_struct {
 };
 ```
 
-> ### real_cred vs cred 의 차이점
+> ### 1-2. real_cred vs cred 의 차이점
 > - real_cred: 프로세스가 생성될 때 부여받은 실제 자격 증명이다. (예: setuid 프로그램 실행 전 원래 유저 ID)  
 > - cred: 프로세스가 현재 작업을 수행할 때 행사하는 유효 자격 증명이다.  
 > - 보통은 두 포인터가 같은 cred 구조체를 가리키지만, setuid 실행파일(예: sudo, passwd)을 실행하면 cred 포인터만 root의 cred 객체를 가리키도록 전환된다.  
 
-# 2. cred 구조체
+## 2. cred 구조체
 cred 구조체는 커널이 파일 접근, 프로세스 신호 전달, 네트워크 바인딩 등 "이 Task가 해당 작업을 수행할 권한이 있는가?"를 검증할 때 참조하는 핵심 객체이다.
 
-### 멤버 변수 필드 (cred.h)
+### 2-1. 멤버 변수 필드 (cred.h)
 *Bootlin 참조:* [`include/linux/cred.h`](https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/cred.h#L115)
 
 ```c
@@ -77,10 +77,10 @@ struct cred {
 } __randomize_layout;            /* GCC 플러그인에 의해 구조체 멤버 순서가 랜덤화될 수 있음 */
 ```
 
-# 3. 커널 익스플로잇에서 `cred` 조작 기법
+## 3. 커널 익스플로잇에서 `cred` 조작 기법
 커널 취약점을 확보했을 때, 권한 상승을 이루어내는 대표적인 패턴 3가지이다.
 
-## 1. commit_creds() + prepare_kernel_cred() 함수 호출
+### 3-1. commit_creds() + prepare_kernel_cred() 함수 호출
 가장 고전적이고 확실한 방법이다. 커널 내부 함수를 `ROP/JOP` 또는 실행 흐름 제어로 직접 실행한다.
 
 ```c
@@ -90,7 +90,7 @@ commit_creds(prepare_kernel_cred(NULL));
 ```
 단, 최신 커널에서는 CFI 기법이나 심볼 은폐로 인해 이 함수들을 직접 호출하기 어려울 수 있으며, 이 경우 `task_struct` 내부의 `cred` 포인터를 직접 조작하는 `DKOM` 방식을 사용한다.
 
-## 2. Direct Cred Overwrite (DKOM - Direct Kernel Object Manipulation)
+### 3-2. Direct Cred Overwrite (DKOM - Direct Kernel Object Manipulation)
 커널 임의 쓰기(AAW) 주소가 확보된 경우, 현재 프로세스의 `task_struct`를 탐색하거나 `cred` 주소를 Leak한 뒤 `uid`, `gid`, `euid` 필드의 메모리를 직접 0으로 수정한다.
 ```
 [현재 task_struct]
@@ -101,7 +101,7 @@ commit_creds(prepare_kernel_cred(NULL));
                       └── egid : 1000  ──(Overwrite)──> 0 (root)
 ```
 
-## 3. init_cred 교체 (Cred Pointer Swapping)
+### 3-3. init_cred 교체 (Cred Pointer Swapping)
 - 커널 메모리 상에는 시스템 최초 프로세스인 init의 권한 정보를 담고 있는 전역 변수 `init_cred`가 존재한다.   
 - `init_cred`는 기본적으로 `root` 권한을 가지고 있다.  
 - 따라서 현재 `task_struct`의 `cred` 및 `real_cred` 포인터가 가리키는 주소를 `init_cred`의 주소로 Overwrite하면 즉시 root 권한을 획득한다.
@@ -112,7 +112,7 @@ task->cred = &init_cred;
 task->real_cred = &init_cred;
 ```
 
-# 4. 요약
+## 4. Summary
 1. **Task 찾기**: current 매크로나 `init_task` 링크드 리스트를 순회하여 현재 내가 실행 중인 프로세스의 `task_struct` 주소를 확보한다.
 2. **cred 포인터 추적**: `task_struct` 내의 `cred` 포인터 오프셋을 계산하여 `cred` 구조체의 위치를 파악한다.
 3. **권한 상승 수행**

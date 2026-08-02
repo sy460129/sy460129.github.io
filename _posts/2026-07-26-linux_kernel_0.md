@@ -6,7 +6,7 @@ tags: [linux, kernel]
 ---
 
 
-# 1. 커널 모드와 유저 모드 (CPU Privilege Levels)
+## 1. 커널 모드와 유저 모드 (CPU Privilege Levels)
 CPU는 실행 권한을 나누어 관리한다.
 
 x86_64 아키텍처에서는 Ring 0 ~ 3으로 구분한다.
@@ -29,7 +29,7 @@ x86_64 아키텍처에서는 Ring 0 ~ 3으로 구분한다.
 
 
 
-# 2. System Call
+## 2. System Call
 유저 공간의 프로그램이 `read`, `write`, `fork`, `brk`, `mmap` 등 커널의 도움이 필요할 때 사용하는 인터페이스.
 
 ### 시스템 콜 실행 흐름 (x86_64)
@@ -44,7 +44,7 @@ x86_64 아키텍처에서는 Ring 0 ~ 3으로 구분한다.
 > - `copy_from_user(to, from, n)`: 유저 공간(`from`)의 데이터를 커널 공간(`to`)으로 복사
 > - `copy_to_user(to, from, n)`: 커널 공간(`from`)의 데이터를 유저 공간(`to`)으로 복사
 
-# 3. 프로세스와 권한 관리 (task_struct와 cred)
+## 3. 프로세스와 권한 관리 (task_struct와 cred)
 bootlin: [https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L820](https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L820)
 
 커널은 실행 중인 모든 작업(프로세스 및 쓰레드)을 `task_struct`라는 PCB라는 구조체로 관리.
@@ -79,7 +79,7 @@ bootlin: [https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L
 > root의 UID/GID 값은 `0`.  
 > 커널 AAW 취약점을 통해 현재 프로세스의 `cred` 구조체 내 UID/EUID 필드를 `0`으로 덮어쓰거나, 커널 내 `commit_creds(prepare_kernel_cred(NULL))` 함수를 호출하여 권한을 상승시키는 것이 커널 익스플로잇의 주요 목표.
 
-# 4. 커널 메모리 관리와 할당자
+## 4. 커널 메모리 관리와 할당자
 커널 메모리는 가상 메모리로 관리되며, Page Table을 통해 물리 메모리에 매핑된다.
 
 - **User Space**: `0x0000000000000000 ~ 0x00007FFFFFFFFFFF`
@@ -92,7 +92,7 @@ bootlin: [https://elixir.bootlin.com/linux/v7.1.4/source/include/linux/sched.h#L
 
 
 
-# 5. 핵심 커널 보호기법
+## 5. 핵심 커널 보호기법
 커널 취약점 공격을 방어하기 위해 적용된 주요 보호 기법들이다.
 
 

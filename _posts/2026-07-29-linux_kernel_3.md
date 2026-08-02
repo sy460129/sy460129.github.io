@@ -7,7 +7,7 @@ tags: [linux, kernel]
 
 참고1: [https://jeongzero.oopy.io/73084e52-54fa-43e2-986b-072ee2a4f80d](https://jeongzero.oopy.io/73084e52-54fa-43e2-986b-072ee2a4f80d)  
 참고2: [https://www.minzkn.com/linuxkernel/pages/gdb-kernel.html](https://www.minzkn.com/linuxkernel/pages/gdb-kernel.html)
-# 1. Build Busybox
+## 1. Build Busybox
 ```sh
 $ wget https://busybox.net/downloads/busybox-1.38.0.tar.bz2
 $ tar -xvf busybox-1.31.0.tar.bz2
@@ -255,7 +255,7 @@ $ chmod +x init
 $ find . -print0 | cpio --null -ov --format=newc | gzip -9 > ./initramfs.cpio.gz
 ```
 
-# 2. Build Kernel
+## 2. Build Kernel
 ```sh
 $ mkdir kernel_lab
 $ wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.14.tar.xz
@@ -269,7 +269,7 @@ KGDB를 설정해주고, 다른 필요한 defconfig들을 설정해준다.
 ![kgdb option](/assets/img/linux_kernel_3/kernel_kgdb.png)
 
 
-# 3. Start with QEMU
+## 3. Start with QEMU
 ```sh
 $ qemu-system-x86_64 \
     -m 2G \
