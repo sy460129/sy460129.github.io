@@ -6,16 +6,14 @@ permalink: /
 
 <!-- 깜빡이는 커서 및 터미널 텍스트 CSS 애니메이션 정의 -->
 <style>
-  /* $ 기호는 흰색, 명령어 글자는 기존 $ 색상(Soft Sky Blue) */
   .term-symbol {
-    color: #ffffff !important; /* 깔끔한 흰색 $ */
+    color: #ffffff !important;
     font-weight: 600 !important;
   }
   .term-cmd {
-    color: #7dd3fc !important; /* Soft Sky Blue */
+    color: #7dd3fc !important;
     font-weight: 600 !important;
   }
-  /* 흰색 깜빡이는 커서 */
   .blink {
     display: inline-block !important;
     width: 8px !important;
