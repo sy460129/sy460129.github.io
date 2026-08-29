@@ -77,7 +77,7 @@ permalink: /
 
 # <span class="term-symbol">$</span> <span class="term-cmd">uname -a</span><span class="blink"></span>
 > * `Seungyeon Park (sy46)`
-> * `Inha University Computer Engineering`
+> * `Inha University Computer Science & Engineering`
 > * `GPA`  `4.18/4.5`
 > * `OPIc IH` (26.01)
 
