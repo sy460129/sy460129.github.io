@@ -80,8 +80,8 @@ permalink: /
 > * `Inha University Computer Science & Engineering`
 > * `GPA`  `4.18/4.5`
 > * `OPIc IH` (26.01)
-> * '정보처리기사' (26.06)
-> * '정보보안기사' (26.08)
+> * `정보처리기사` (26.06)
+> * `정보보안기사` (26.08)
 
 ---
 
