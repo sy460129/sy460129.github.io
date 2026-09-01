@@ -14,7 +14,7 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: sy46's hacking note # the main title
+title: sy46 | wottosha # the main title
 
 tagline: Pwnable # it will display as the subtitle
 
@@ -23,11 +23,11 @@ description: >- # used by seo meta and the atom feed
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://sy460129.github.io"
+url: "https://vvsy46.github.io"
 base_url: ""
 
 github:
-  username: sy460129 # change to your GitHub username
+  username: vvsy46 # change to your GitHub username
 
 twitter:
   username: vvsy46 # change to your Twitter username
@@ -41,10 +41,10 @@ social:
   links:
     # The first element serves as the copyright owner's link
     # change to your Twitter homepage
-    - https://github.com/sy460129 # change to your GitHub homepage
+    - https://github.com/vvsy46 # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.linkedin.com/in/seungyeon-park
 
 # Site Verification Settings
 webmaster_verifications:
