@@ -5,7 +5,7 @@
 prod=false
 # NOTE: livereload port fixed to 35730 because Windows/WSL2 reserves the
 # default 35729 (bind fails with "no acceptor" even when nothing is listening).
-command="bundle exec jekyll s -l --livereload-port 35730"
+command="bundle exec jekyll s -l --port 5000 --livereload-port 35730"
 host="127.0.0.1"
 
 help() {
