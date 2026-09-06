@@ -43,8 +43,8 @@ This work is published under [MIT][mit] License.
 ## Build method
 
 ``` sh
-$ git clone https://github.com/sy460129/sy460129.github.io.git
-$ cd sy460129.github.io
+$ git clone https://github.com/vvsy46/vvsy46.github.io.git
+$ cd vvsy46.github.io
 
 $ git rm -rf . 2>/dev/null || true
 
